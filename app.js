@@ -121,4 +121,38 @@ for (var j = 0; j < locations.length; j++) {
   }
 }
 
-// document.getElementById('update')
+// document.getElementById('update').onclick = function() {
+//   // clear old report data
+//   var lists = document.getElementsByTagName('ul');
+//   for (var l = 0; l < lists.length; l++) {
+//     var elements = lists[l].children;
+//     for (var m = 0; m < elements.length; m++) {
+//       lists[l].removeChild(elements[m]);
+//     }
+//     document.body.removeChild(lists[l]);
+//   }
+
+//   resetStores(locations);
+//   // loop through locations
+//   for (var j = 0; j < locations.length; j++) {
+//     var store = document.createElement('ul');
+//     document.body.appendChild(store);
+//     document.body.lastChild.textContent = locations[j].name;
+//     // loop through store to generate list by hour
+//     for(var k = openTime; k < closeTime; k++) {
+//       var randCookies = cookieQuant(locations[j]);
+//       var newLI = document.createElement('li');
+//       document.body.appendChild(newLI);
+//       // am or pm?
+//       if (k < 12) {
+//         document.body.lastChild.textContent = k + 'am: ' + randCookies + ' cookies';
+//       }
+//       else if (k === 12) {
+//         document.body.lastChild.textContent = k + 'pm: ' + randCookies + ' cookies';
+//       }
+//       else {
+//         document.body.lastChild.textContent = k - 12 + 'pm: ' + randCookies + ' cookies';
+//       }
+//     }
+//   }
+// };
