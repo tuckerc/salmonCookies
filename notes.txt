@@ -1,0 +1,42 @@
+Salmon Cookies
+
+  Public Facing
+
+
+  
+  Daily Sales Projections
+
+    Need to be able to modify for Pat's needs.
+      Add location
+      Remove location
+      Modify values
+    
+    5 Stores
+      startTime = 6;
+      endTime = 20;
+      minCust = 0;
+      maxCust = 0;
+      avgCookie = 0;
+      
+      // THANKY YOU https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+      function getRand(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      setMinCust() {
+        minCust = getRand(0, 1000);
+      }
+
+      setMaxCust() {
+        maxCust = getRand(minCust + 1, 1000);
+      }
+
+      getCookiesPerHour(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      locations = []
+
+      for (var i = 0; i < 5; i++) {
+        locations.push(new Store store+String(i));
+      }
