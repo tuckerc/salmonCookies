@@ -1,5 +1,10 @@
 'use strict';
 
+//global for store open time
+const openTime = 6;
+//global for store close time
+const closeTime = 20;
+
 // Seattle
 var seattle = {
   name: 'Seattle',
@@ -73,10 +78,12 @@ var lima = {
 // set initial values for store locations
 var locations = [seattle,tokyo,dubai,paris,lima];
 
+console.log(locations);
+
 // function to generate a random number of
 // cookies
 function cookieQuant(store) {
-  return Math.random() * (this.maxCust - this.minCust) + this.minCust;
+  return Math.round(Math.random() * (store.maxCust - store.minCust) + store.minCust);
 }
 
 // function to update min and max customers for all locations
@@ -91,23 +98,27 @@ function resetStores(locs) {
 * Script for Salmon Cookies day 1.
 ******************************************/
 
-// store 1 DOM
-var store1 = document.createElement('ul');
-document.getElementsByTagName('main').appendChild(store1);
-//
+// loop through locations
+for (var j = 0; j < locations.length; j++) {
+  var store = document.createElement('ul');
+  document.body.appendChild(store);
+  document.body.lastChild.textContent = locations[j].name;
+  // loop through store to generate list by hour
+  for(var k = openTime; k < closeTime; k++) {
+    var randCookies = cookieQuant(locations[j]);
+    var newLI = document.createElement('li');
+    document.body.appendChild(newLI);
+    // am or pm?
+    if (k < 12) {
+      document.body.lastChild.textContent = k + 'am: ' + randCookies + ' cookies';
+    }
+    else if (k === 12) {
+      document.body.lastChild.textContent = k + 'pm: ' + randCookies + ' cookies';
+    }
+    else {
+      document.body.lastChild.textContent = k - 12 + 'pm: ' + randCookies + ' cookies';
+    }
+  }
+}
 
-// store 2 DOM
-var store2 = document.createElement('ul');
-document.getElementsByTagName('main').appendChild(store2);
-
-// store 3 DOM
-var store3 = document.createElement('ul');
-document.getElementsByTagName('main').appendChild(store3);
-
-// store 4 DOM
-var store4 = document.createElement('ul');
-document.getElementsByTagName('main').appendChild(store4);
-
-// store 5 DOM
-var store5 = document.createElement('ul');
-document.getElementsByTagName('main').appendChild(store5);
+// document.getElementById('update')
