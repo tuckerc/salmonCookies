@@ -9,3 +9,22 @@ main {
 header {
   text-align: center;
 }
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  border: 2px solid black;
+  margin: 15px;
+  padding-inline-start: 0px;
+  padding: 5px;
+}
+
+li {
+  margin: auto;
+  padding: 10px;
+  text-align: left;
+  list-style-type: none;
+}
