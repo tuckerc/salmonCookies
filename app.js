@@ -4,6 +4,8 @@
 const openTime = 6;
 //global for store close time
 const closeTime = 20;
+//global for store hours
+const hours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
 
 // store constructor
 function Store(name, minCust, maxCust, cookiesPerSale) {
@@ -46,6 +48,43 @@ function Store(name, minCust, maxCust, cookiesPerSale) {
   };
 }
 
+function fillHeader() {
+  var tr = document.createElement('tr');
+  var th = document.createElement('th');
+  tr.appendChild(th);
+  for (var hour = 0; hour < hours.length; hour++) {
+    var hourTH = document.createElement('th');
+    hourTH.textContent = hours[hour];
+    tr.appendChild(hourTH);
+  }
+  var cityTotHeader = document.createElement('th');
+  cityTotHeader.textContent = 'Daily Location Total';
+  tr.appendChild(cityTotHeader);
+  document.getElementById('tableHead').appendChild(tr);
+}
+
+function fillFooter() {
+  var tr = document.createElement('tr');
+  var td = document.createElement('td');
+  tr.appendChild(td);
+  // fill in totals by hour
+  var grandTotal = 0;
+  for (var y = 0; y < closeTime - openTime; y++) {
+    var total = 0;
+    var totalTD = document.createElement('td');
+    for (var z = 0; z < locations.length; z++) {
+      total += Number(locations[z].cookiesPerHour[y]);
+    }
+    grandTotal += total;
+    totalTD.textContent = total;
+    tr.appendChild(totalTD);
+  }
+  var grandTotalTD = document.createElement('td');
+  grandTotalTD.textContent = grandTotal;
+  tr.appendChild(grandTotalTD);
+  document.getElementById('tableBody').appendChild(tr);
+}
+
 // Seattle
 var seattle = new Store('Seattle', 23, 54, 6.3);
 
@@ -64,7 +103,7 @@ var lima = new Store('Lima', 2, 16, 4.6);
 // set initial values for store locations
 var locations = [seattle,tokyo,dubai,paris,lima];
 
-console.log(locations);
+fillHeader();
 
 seattle.fillTable();
 tokyo.fillTable();
@@ -72,25 +111,9 @@ dubai.fillTable();
 paris.fillTable();
 lima.fillTable();
 
-var tr = document.createElement('tr');
-var td = document.createElement('td');
-tr.appendChild(td);
-// fill in totals by hour
-var grandTotal = 0;
-for (var y = 0; y < closeTime - openTime; y++) {
-  var total = 0;
-  var totalTD = document.createElement('td');
-  for (var z = 0; z < locations.length; z++) {
-    total += Number(locations[z].cookiesPerHour[y]);
-  }
-  grandTotal += total;
-  totalTD.textContent = total;
-  tr.appendChild(totalTD);
-}
-var grandTotalTD = document.createElement('td');
-grandTotalTD.textContent = grandTotal;
-tr.appendChild(grandTotalTD);
-document.getElementById('tableBody').appendChild(tr);
+fillFooter();
+
+
 // function to update min and max customers for all locations
 // function resetStores(locs) {
 //   for(var i = 0; i < locs.length; i++) {
