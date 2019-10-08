@@ -11,6 +11,8 @@ var seattle = {
   minCust:23,
   maxCust:65,
   cookiesPerSale:6.3,
+  cookiesPerHour:[],
+  totalCookies:0,
   setMinCust:function() {
     this.minCust = Math.random() * (this.maxCust - 0) + this.minCust;
   },
@@ -25,6 +27,8 @@ var tokyo = {
   minCust:3,
   maxCust:24,
   cookiesPerSale:1.2,
+  cookiesPerHour:[],
+  totalCookies:0,
   setMinCust:function() {
     this.minCust = Math.random() * (this.maxCust - 0) + this.minCust;
   },
@@ -39,6 +43,8 @@ var dubai = {
   minCust:11,
   maxCust:38,
   cookiesPerSale:3.7,
+  cookiesPerHour:[],
+  totalCookies:0,
   setMinCust:function() {
     this.minCust = Math.random() * (this.maxCust - 0) + this.minCust;
   },
@@ -53,6 +59,8 @@ var paris = {
   minCust:20,
   maxCust:38,
   cookiesPerSale:2.3,
+  cookiesPerHour:[],
+  totalCookies:0,
   setMinCust:function() {
     this.minCust = Math.random() * (this.maxCust - 0) + this.minCust;
   },
@@ -67,6 +75,8 @@ var lima = {
   minCust:2,
   maxCust:16,
   cookiesPerSale:4.6,
+  cookiesPerHour:[],
+  totalCookies:0,
   setMinCust:function() {
     this.minCust = Math.random() * (this.maxCust - 0) + this.minCust;
   },
@@ -78,8 +88,6 @@ var lima = {
 // set initial values for store locations
 var locations = [seattle,tokyo,dubai,paris,lima];
 
-console.log(locations);
-
 // function to generate a random number of
 // cookies
 function cookieQuant(store) {
@@ -87,12 +95,12 @@ function cookieQuant(store) {
 }
 
 // function to update min and max customers for all locations
-function resetStores(locs) {
-  for(var i = 0; i < locs.length; i++) {
-    locs[i].setMinCust();
-    locs[i].setMaxCrust();
-  }
-}
+// function resetStores(locs) {
+//   for(var i = 0; i < locs.length; i++) {
+//     locs[i].setMinCust();
+//     locs[i].setMaxCrust();
+//   }
+// }
 
 /******************************************
 * Script for Salmon Cookies day 1.
@@ -106,6 +114,8 @@ for (var j = 0; j < locations.length; j++) {
   // loop through store to generate list by hour
   for(var k = openTime; k < closeTime; k++) {
     var randCookies = cookieQuant(locations[j]);
+    locations[j].cookiesPerHour.push(randCookies);
+    locations[j].totalCookies += randCookies;
     var newLI = document.createElement('li');
     document.body.appendChild(newLI);
     // am or pm?
@@ -119,6 +129,11 @@ for (var j = 0; j < locations.length; j++) {
       document.body.lastChild.textContent = k - 12 + 'pm: ' + randCookies + ' cookies';
     }
   }
+  // add total cookies
+  var newLI = document.createElement('li');
+  document.body.appendChild(newLI);
+  document.body.lastChild.textContent = 'Total: ' + locations[j].totalCookies + ' cookies';
+  console.log(locations[j]);
 }
 
 // document.getElementById('update').onclick = function() {
