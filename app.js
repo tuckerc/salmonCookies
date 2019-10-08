@@ -91,7 +91,7 @@ var locations = [seattle,tokyo,dubai,paris,lima];
 // function to generate a random number of
 // cookies
 function cookieQuant(store) {
-  return Math.round(Math.random() * (store.maxCust - store.minCust) + store.minCust);
+  return Math.round((Math.random() * (store.maxCust - store.minCust) + store.minCust) * store.cookiesPerSale);
 }
 
 // function to update min and max customers for all locations
