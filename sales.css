@@ -1,0 +1,11 @@
+main {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-items: center;
+}
+
+header {
+  text-align: center;
+}

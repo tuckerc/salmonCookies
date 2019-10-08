@@ -109,31 +109,32 @@ function cookieQuant(store) {
 // loop through locations
 for (var j = 0; j < locations.length; j++) {
   var store = document.createElement('ul');
-  document.body.appendChild(store);
-  document.body.lastChild.textContent = locations[j].name;
+  store.textContent = locations[j].name;
   // loop through store to generate list by hour
   for(var k = openTime; k < closeTime; k++) {
     var randCookies = cookieQuant(locations[j]);
     locations[j].cookiesPerHour.push(randCookies);
     locations[j].totalCookies += randCookies;
     var newLI = document.createElement('li');
-    document.body.appendChild(newLI);
     // am or pm?
     if (k < 12) {
-      document.body.lastChild.textContent = k + 'am: ' + randCookies + ' cookies';
+      newLI.textContent = k + 'am: ' + randCookies + ' cookies';
     }
     else if (k === 12) {
-      document.body.lastChild.textContent = k + 'pm: ' + randCookies + ' cookies';
+      newLI.textContent = k + 'pm: ' + randCookies + ' cookies';
     }
     else {
-      document.body.lastChild.textContent = k - 12 + 'pm: ' + randCookies + ' cookies';
+      newLI.textContent = k - 12 + 'pm: ' + randCookies + ' cookies';
     }
+    store.appendChild(newLI);
   }
   // add total cookies
   var newLI = document.createElement('li');
-  document.body.appendChild(newLI);
-  document.body.lastChild.textContent = 'Total: ' + locations[j].totalCookies + ' cookies';
-  console.log(locations[j]);
+  newLI.textContent = 'Total: ' + locations[j].totalCookies + ' cookies';
+  store.appendChild(newLI);
+
+  var mainContent = document.getElementById('mainContent');
+  mainContent.appendChild(store);
 }
 
 // document.getElementById('update').onclick = function() {
