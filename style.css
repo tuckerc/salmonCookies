@@ -1,0 +1,36 @@
+main {
+  background-image: url('wood.jpg');
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+h1 {
+  font-family: 'Homemade Apple', cursive;
+  text-align: center;
+  font-size: 3.5em;
+  background-color: rgb(42, 181, 95);
+}
+
+h2 {
+  font-family: 'Comic Sans MS';
+  text-align: center;
+  font-size: 2em;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.salmon {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
