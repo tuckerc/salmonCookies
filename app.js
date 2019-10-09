@@ -7,6 +7,8 @@ const closeTime = 20;
 //global for store hours
 const hours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
 
+var locations = [];
+
 // store constructor
 function Store(name, minCust, maxCust, cookiesPerSale) {
   this.name = name;
@@ -85,33 +87,71 @@ function fillFooter() {
   document.getElementById('tableBody').appendChild(tr);
 }
 
-// Seattle
-var seattle = new Store('Seattle', 23, 54, 6.3);
-
-// Tokyo
-var tokyo = new Store('Tokyo', 3, 24, 1.2);
-
-// Dubai
-var dubai = new Store('Dubai', 11, 38, 3.7);
-
-// Paris
-var paris = new Store('Paris', 20, 38, 2.3);
-
-// Lima
-var lima = new Store('Lima', 2, 16, 4.6);
-
-// set initial values for store locations
-var locations = [seattle,tokyo,dubai,paris,lima];
+function addStore(name, minCust, maxCust, cookiesPerSale) {
+  locations.push(new Store(name, minCust, maxCust, cookiesPerSale));
+  if (document.getElementById('tableBody').children.length > 1) {
+    //remove footer
+    var lastTR = document.getElementById('tableBody').lastChild;
+    document.getElementById('tableBody').removeChild(lastTR);
+  }
+  locations[locations.length - 1].fillTable();
+  fillFooter();
+}
 
 fillHeader();
 
-seattle.fillTable();
-tokyo.fillTable();
-dubai.fillTable();
-paris.fillTable();
-lima.fillTable();
+document.getElementById('addSubmit').addEventListener('click', function(event) {
+  event.preventDefault();
+  // event.stopPropagation();
+  var nameInput = document.getElementById('nameInput');
+  var minCustInput = document.getElementById('minCustInput');
+  var maxCustInput = document.getElementById('maxCustInput');
+  var cookiesPerSaleInput = document.getElementById('cookiesPerSaleInput');
+  if (nameInput.value === '' || nameInput.value === null || minCustInput.value === '' || minCustInput.value === null || maxCustInput.value === '' || maxCustInput.value === null || cookiesPerSaleInput.value === '' || cookiesPerSaleInput.value === null) {
+    alert('Please provide a value for all fields');
+  }
+  else {
+    if((Number(nameInput.value))===NaN) {
+      alert('Text only please');
+    }
+    else {
+      addStore(nameInput.value, minCustInput.value, maxCustInput.value, cookiesPerSaleInput.value);
+      nameInput.value = null;
+      minCustInput.value = null;
+      maxCustInput.value = null;
+      cookiesPerSaleInput.value = null;
+      nameInput.focus();
+    }
+  }
+});
 
-fillFooter();
+// // Seattle
+// var seattle = new Store('Seattle', 23, 54, 6.3);
+
+// // Tokyo
+// var tokyo = new Store('Tokyo', 3, 24, 1.2);
+
+// // Dubai
+// var dubai = new Store('Dubai', 11, 38, 3.7);
+
+// // Paris
+// var paris = new Store('Paris', 20, 38, 2.3);
+
+// // Lima
+// var lima = new Store('Lima', 2, 16, 4.6);
+
+// // set initial values for store locations
+// var locations = [seattle,tokyo,dubai,paris,lima];
+
+// fillHeader();
+
+// seattle.fillTable();
+// tokyo.fillTable();
+// dubai.fillTable();
+// paris.fillTable();
+// lima.fillTable();
+
+// fillFooter();
 
 
 // function to update min and max customers for all locations

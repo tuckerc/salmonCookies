@@ -30,9 +30,11 @@ li {
 }
 
 table {
+  margin-top: 10px;
   padding: 5px;
   border-collapse: collapse;
   empty-cells: hide;
+  width: 95%;
 }
 
 th, td {
@@ -44,4 +46,21 @@ th, td {
 
 tr {
   empty-cells: hide;
+}
+
+form {
+  width: 95%;
+}
+
+.input {
+  display: inline-block;
+  margin: 5px;
+}
+
+input:valid {
+  border: 1px solid black;
+}
+
+input:invalid {
+  border: 1px solid red;
 }

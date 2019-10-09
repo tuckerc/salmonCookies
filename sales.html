@@ -13,6 +13,30 @@
     </header>
     <!-- <button id="update">Reset</button> -->
     <main id='mainContent'>
+      <form id='inputForm'>
+        <fieldset>
+          <legend>Add Shop Location</legend>
+          <div class='input'>
+            <label for='name'>Shop Name:</label>
+            <input id='nameInput' type='text' name='name' required>  
+          </div>
+          <div class='input'>
+            <label for='minCust'>Minimum Customers Per Hour:</label>
+            <input id='minCustInput' type='number' name='minCust' required>
+          </div>
+          <div class='input'>
+            <label for='maxCust'>Maximum Customers Per Hour:</label>
+            <input id='maxCustInput' type='number' name='maxCust' required>
+          </div>
+          <div class='input'>
+            <label for='cookiesPerSale'>Average Cookies Per Sale:</label>
+            <input id='cookiesPerSaleInput' type='number' name='cookiesPerSale' required>
+          </div>
+          <div class='input'>
+            <input id='addSubmit' type='submit' name='addSubmit' value='Add Location'>
+          </div>
+        </fieldset>
+      </form>
       <table>
         <thead id='tableHead'>
           
