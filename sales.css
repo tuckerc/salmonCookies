@@ -45,3 +45,12 @@ th, td {
 tr {
   empty-cells: hide;
 }
+
+form {
+  width: 95%;
+}
+
+.input {
+  display: inline-block;
+  margin: 5px;
+}
