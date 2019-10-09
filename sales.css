@@ -31,12 +31,17 @@ li {
 
 table {
   padding: 5px;
-  border: 1px solid black;
   border-collapse: collapse;
+  empty-cells: hide;
 }
 
 th, td {
   margin: 0px;
   padding: 5px;
   border: 1px dashed gray;
+  empty-cells: hide;
+}
+
+tr {
+  empty-cells: hide;
 }
