@@ -111,7 +111,8 @@ document.getElementById('addSubmit').addEventListener('click', function(event) {
     alert('Please provide a value for all fields');
   }
   else {
-    if((Number(nameInput.value))===NaN) {
+    console.log(typeof(nameInput.value));
+    if(!isNaN(nameInput.value)) {
       alert('Text only please');
     }
     else {
