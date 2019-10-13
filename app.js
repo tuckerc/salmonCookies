@@ -126,3 +126,10 @@ function fillFromForm(e) {
 }
 
 document.getElementById('addSubmit').addEventListener('click', fillFromForm);
+
+// fill table with default data
+addStore('Seattle', 23, 65, 6.3);
+addStore('Tokyo', 3, 24, 1.2);
+addStore('Dubai', 11, 38, 3.7);
+addStore('Paris', 20, 38, 2.3);
+addStore('Lima', 2, 16, 4.6);
