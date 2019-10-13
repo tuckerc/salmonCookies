@@ -50,6 +50,45 @@ function Store(name, minCust, maxCust, cookiesPerSale) {
   };
 }
 
+
+function streetNum() {
+  // returns a random street number
+  return random(100000);
+}
+
+function streetName() {
+  // array for storing common street names
+  var streetNames = ['Second', 'Third', 'First', 'Fourth', 'Park', 'Fifth', 'Main', 'Sixth', 'Oak', 'Seventh', 'Pine', 'Maple', 'Cedar', 'Eighth', 'Elm', 'View', 'Washington', 'Ninth', 'Lake', 'Hill'];
+  return streetNames[random(streetNames.length)];
+}
+
+function streetSuffix() {
+  // array for storing common street suffixes
+  var suffixes = ['Street', 'Drive', 'Place', 'Circle', 'Avenue', 'Road'];
+  return suffixes[random(suffixes.length)];
+}
+
+function cityName() {
+  // array for storing commonly used city names
+  var cityNames = ['Franklin', 'Clinton', 'Washington', 'Arlington', 'Chester', 'Georgetown', 'Madison', 'Greenville', 'Bristol', 'Fairview', 'Salem'];
+  return cityNames[random(cityNames.length)];
+}
+
+function stateName() {
+  // array for storing state names
+  var stateNames = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+  return stateNames[random(stateNames.length)];
+}
+
+function zipCode() {
+  // returns a random integer from 0 to 9999
+  return Math.floor(Number(String(random(10)) + String(random(10)) + String(random(10)) + String(random(10)) + String(random(10))));
+}
+
+function random(max) {
+  return Math.floor(Math.random() * max);
+}
+
 function fillHeader() {
   var tr = document.createElement('tr');
   var th = document.createElement('th');
@@ -63,6 +102,10 @@ function fillHeader() {
   cityTotHeader.textContent = 'Daily Location Total';
   tr.appendChild(cityTotHeader);
   document.getElementById('tableHead').appendChild(tr);
+}
+
+function address() {
+  return streetNum() + ' ' + streetName() + ' ' + streetSuffix() + '\n' + cityName() + ', ' + stateName() + ' ' + zipCode();
 }
 
 function fillFooter() {
@@ -95,6 +138,12 @@ function addStore(name, minCust, maxCust, cookiesPerSale) {
     document.getElementById('tableBody').removeChild(lastTR);
   }
   locations[locations.length - 1].fillTable();
+  var footer = document.getElementById('footer');
+  var div = document.createElement('div');
+  var p = document.createElement('p');
+  p.textContent = address();
+  div.appendChild(p);
+  footer.appendChild(div);
   fillFooter();
 }
 
