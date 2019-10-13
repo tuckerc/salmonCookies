@@ -100,9 +100,9 @@ function addStore(name, minCust, maxCust, cookiesPerSale) {
 
 fillHeader();
 
-document.getElementById('addSubmit').addEventListener('click', function(event) {
-  event.preventDefault();
-  // event.stopPropagation();
+function fillFromForm(e) {
+  e.preventDefault();
+  // e.stopPropagation();
   var nameInput = document.getElementById('nameInput');
   var minCustInput = document.getElementById('minCustInput');
   var maxCustInput = document.getElementById('maxCustInput');
@@ -111,7 +111,6 @@ document.getElementById('addSubmit').addEventListener('click', function(event) {
     alert('Please provide a value for all fields');
   }
   else {
-    console.log(typeof(nameInput.value));
     if(!isNaN(nameInput.value)) {
       alert('Text only please');
     }
@@ -124,126 +123,6 @@ document.getElementById('addSubmit').addEventListener('click', function(event) {
       nameInput.focus();
     }
   }
-});
+}
 
-// // Seattle
-// var seattle = new Store('Seattle', 23, 54, 6.3);
-
-// // Tokyo
-// var tokyo = new Store('Tokyo', 3, 24, 1.2);
-
-// // Dubai
-// var dubai = new Store('Dubai', 11, 38, 3.7);
-
-// // Paris
-// var paris = new Store('Paris', 20, 38, 2.3);
-
-// // Lima
-// var lima = new Store('Lima', 2, 16, 4.6);
-
-// // set initial values for store locations
-// var locations = [seattle,tokyo,dubai,paris,lima];
-
-// fillHeader();
-
-// seattle.fillTable();
-// tokyo.fillTable();
-// dubai.fillTable();
-// paris.fillTable();
-// lima.fillTable();
-
-// fillFooter();
-
-
-// function to update min and max customers for all locations
-// function resetStores(locs) {
-//   for(var i = 0; i < locs.length; i++) {
-//     locs[i].setMinCust();
-//     locs[i].setMaxCrust();
-//   }
-// }
-
-/******************************************
-* Script for Salmon Cookies day 1.
-******************************************/
-
-// var grandTotal = 0; //var for daily grand total
-// // loop through locations
-// for (var j = 0; j < locations.length; j++) {
-//   var store = document.createElement('tr');
-//   var th = document.createElement('th');
-//   th.textContent = locations[j].name;
-//   store.appendChild(th);
-
-//   // loop through store to generate list by hour
-//   for(var k = openTime; k < closeTime; k++) {
-//     var randCookies = cookieQuant(locations[j]);
-//     locations[j].cookiesPerHour.push(randCookies);
-//     locations[j].totalCookies += randCookies;
-//     var td = document.createElement('td');
-//     td.textContent = randCookies;
-//     store.appendChild(td);
-//   }
-//   // add total cookies
-//   var td = document.createElement('td');
-//   td.textContent = locations[j].totalCookies;
-//   store.appendChild(td);
-
-//   var tableBody = document.getElementById('tableBody');
-//   tableBody.appendChild(store);
-//   grandTotal += locations[j].totalCookies;
-// }
-
-// var hourlyTotal = 0; //var to hold hourly total for all stores
-// var store = document.createElement('tr');
-// var td = document.createElement('td');
-// store.appendChild(td);
-// for(var n = 0; n < locations[0].cookiesPerHour.length; n++) {
-//   for(var p = 0; p < locations.length; p++) {
-//     hourlyTotal += Number(locations[p].cookiesPerHour[n]);
-//   }
-//   var total = document.createElement('td');
-//   total.textContent = hourlyTotal;
-//   store.appendChild(total);
-// }
-// var total = document.createElement('td');
-// total.textContent = grandTotal;
-// store.appendChild(total);
-// var tableBody = document.getElementById('tableBody');
-// tableBody.appendChild(store);
-
-// document.getElementById('update').onclick = function() {
-//   // clear old report data
-//   var lists = document.getElementsByTagName('ul');
-//   for (var l = 0; l < lists.length; l++) {
-//     var elements = lists[l].children;
-//     for (var m = 0; m < elements.length; m++) {
-//       lists[l].removeChild(elements[m]);
-//     }
-//     document.body.removeChild(lists[l]);
-//   }
-
-//   resetStores(locations);
-//   // loop through locations
-//   for (var j = 0; j < locations.length; j++) {
-//     var store = document.createElement('ul');
-//     document.body.appendChild(store);
-//     document.body.lastChild.textContent = locations[j].name;
-//     // loop through store to generate list by hour
-//     for(var k = openTime; k < closeTime; k++) {
-//       var randCookies = cookieQuant(locations[j]);
-//       var newLI = document.createElement('li');
-//       document.body.appendChild(newLI);
-//       // am or pm?
-//       if (k < 12) {
-//         document.body.lastChild.textContent = k + 'am: ' + randCookies + ' cookies';
-//       }
-//       else if (k === 12) {
-//         document.body.lastChild.textContent = k + 'pm: ' + randCookies + ' cookies';
-//       }
-//       else {
-//         document.body.lastChild.textContent = k - 12 + 'pm: ' + randCookies + ' cookies';
-//       }
-//     }
-//   }
-// };
+document.getElementById('addSubmit').addEventListener('click', fillFromForm);
