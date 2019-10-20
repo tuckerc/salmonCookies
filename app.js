@@ -26,7 +26,6 @@ function Store(name, minCust, maxCust, cookiesPerSale) {
   // function to generate a random number of cookies
   this.cookieQuant = function() {
     var quant = Math.round(((Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust)) * this.cookiesPerSale);
-    console.log(`quant: ${quant}, this.minCust: ${this.minCust}, this.maxCust: ${this.maxCust}, this.cookiesPerSale: ${this.cookiesPerSale}`);
     return quant;
   };
   this.fillTable = function() {
