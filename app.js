@@ -18,14 +18,15 @@ function Store(name, minCust, maxCust, cookiesPerSale) {
   this.cookiesPerHour = [];
   this.totalCookies = 0;
   this.setMinCust = function() {
-    this.minCust = Math.random() * (this.maxCust - 0) + this.minCust;
+    this.minCust = Math.round(Math.floor(Math.random() * (this.maxCust - 0)) + this.minCust);
   };
   this.setMaxCrust = function() {
-    this.maxCust = Math.random() * (1000 - this.minCust) + this.minCust;
+    this.maxCust = Math.round(Math.floor(Math.random() * (1000 - this.minCust)) + this.minCust);
   };
   // function to generate a random number of cookies
   this.cookieQuant = function() {
-    return Math.round((Math.random() * (this.maxCust - this.minCust) + this.minCust) * this.cookiesPerSale);
+    var quant = Math.round(((Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust)) * this.cookiesPerSale);
+    return quant;
   };
   this.fillTable = function() {
     var tr = document.createElement('tr');
